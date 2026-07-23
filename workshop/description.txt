@@ -1,4 +1,5 @@
 [h1]Smart Priorities[/h1]
+[b]Version 2.1:[/b] Manage each duplicant directly from a new checkbox column in the Priorities screen. The header checkbox toggles the whole colony.
 
 Automatically balances duplicant work priorities according to their relative skill levels across the colony.
 

@@ -44,6 +44,15 @@ namespace OniSmartPriorities
         }
     }
 
+    [HarmonyPatch(typeof(JobsTableScreen), "OnActivate")]
+    internal static class JobsTableScreenOnActivatePatch
+    {
+        private static void Postfix(JobsTableScreen __instance)
+        {
+            SmartPrioritiesJobsColumn.Register(__instance);
+        }
+    }
+
     [HarmonyPatch(typeof(ScheduleManager), "OnSpawn")]
     internal static class ScheduleManagerOnSpawnPatch
     {

@@ -23,8 +23,10 @@ essenziali e gli ordini manuali non restano in attesa.
 
 La mod gestisce duplicanti organici e bionici. Le priorità vengono ricalcolate
 ogni 60 secondi di gioco, quindi seguono la crescita degli attributi e l'arrivo
-di nuovi duplicanti. Le modifiche manuali nella schermata Priorità vengono
-riallineate al calcolo automatico al ribilanciamento successivo.
+di nuovi duplicanti. I duplicanti morti o in fase di distruzione vengono
+esclusi sia dal calcolo sia dalla colonna Smart. Le modifiche manuali nella
+schermata Priorità vengono riallineate al calcolo automatico al
+ribilanciamento successivo.
 
 Nella schermata Priorità compare una colonna `Smart` con un interruttore per
 ogni duplicante; l'interruttore nell'intestazione agisce su tutta la colonia.

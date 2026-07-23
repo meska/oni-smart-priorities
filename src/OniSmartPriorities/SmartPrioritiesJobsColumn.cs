@@ -76,7 +76,7 @@ namespace OniSmartPriorities
             if (row != null && row.rowType == TableRow.RowType.Header)
             {
                 var states = Components.LiveMinionIdentities.Items
-                    .Where(minion => minion != null)
+                    .Where(IsAlive)
                     .Select(IsEnabled)
                     .Distinct()
                     .ToArray();
@@ -90,7 +90,9 @@ namespace OniSmartPriorities
                     : TableScreen.ResultValues.False;
             }
 
-            return identity is MinionIdentity minion && IsEnabled(minion)
+            return identity is MinionIdentity minion
+                && IsAlive(minion)
+                && IsEnabled(minion)
                 ? TableScreen.ResultValues.True
                 : TableScreen.ResultValues.False;
         }
@@ -108,10 +110,13 @@ namespace OniSmartPriorities
                 var enable = GetValue(null, widget) != TableScreen.ResultValues.True;
                 foreach (var minion in Components.LiveMinionIdentities.Items)
                 {
-                    minion?.GetComponent<SmartPrioritiesState>()?.SetEnabled(enable);
+                    if (IsAlive(minion))
+                    {
+                        minion.GetComponent<SmartPrioritiesState>()?.SetEnabled(enable);
+                    }
                 }
             }
-            else if (row.GetIdentity() is MinionIdentity minion)
+            else if (row.GetIdentity() is MinionIdentity minion && IsAlive(minion))
             {
                 var state = minion.GetComponent<SmartPrioritiesState>();
                 state?.SetEnabled(!state.Enabled);
@@ -125,7 +130,7 @@ namespace OniSmartPriorities
             TableScreen.ResultValues value)
         {
             var row = widget.GetComponentInParent<TableRow>();
-            if (row?.GetIdentity() is MinionIdentity minion)
+            if (row?.GetIdentity() is MinionIdentity minion && IsAlive(minion))
             {
                 minion.GetComponent<SmartPrioritiesState>()?.SetEnabled(
                     value == TableScreen.ResultValues.True);
@@ -138,10 +143,18 @@ namespace OniSmartPriorities
             IAssignableIdentity right)
         {
             var leftEnabled = left is MinionIdentity leftMinion
+                && IsAlive(leftMinion)
                 && IsEnabled(leftMinion);
             var rightEnabled = right is MinionIdentity rightMinion
+                && IsAlive(rightMinion)
                 && IsEnabled(rightMinion);
             return rightEnabled.CompareTo(leftEnabled);
+        }
+
+        private static bool IsAlive(MinionIdentity minion)
+        {
+            // Durante la morte la tabella pol tegnir la riga fin al refresh seguente.
+            return minion != null && !minion.HasTag(GameTags.Dead);
         }
 
         private static bool IsEnabled(MinionIdentity minion)

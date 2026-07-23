@@ -15,8 +15,14 @@ namespace OniSmartPriorities
 
         public override bool IsValidForTarget(GameObject target)
         {
-            return target != null
-                && target.GetComponent<MinionIdentity>() != null
+            if (target == null)
+            {
+                return false;
+            }
+
+            var minion = target.GetComponent<MinionIdentity>();
+            return minion != null
+                && !minion.HasTag(GameTags.Dead)
                 && target.GetComponent<SmartPrioritiesState>() != null;
         }
 
@@ -46,7 +52,9 @@ namespace OniSmartPriorities
 
         public override void SetTarget(GameObject target)
         {
-            state = target.GetComponent<SmartPrioritiesState>();
+            state = IsValidForTarget(target)
+                ? target.GetComponent<SmartPrioritiesState>()
+                : null;
             Refresh();
         }
 

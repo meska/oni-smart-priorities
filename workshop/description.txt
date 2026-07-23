@@ -17,6 +17,7 @@ Automatically balances duplicant work priorities according to their relative ski
 [*]Rebalances automatically every 60 seconds of game time.
 [*]Can be disabled individually for any duplicant from their side panel.
 [*]Per-duplicant choices are stored in the save; automatic management is enabled by default.
+[*]Dead or despawning duplicants are safely ignored by recalculation and UI controls.
 [/list]
 
 [b]Source code and releases[/b]

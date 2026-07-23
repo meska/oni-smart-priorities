@@ -58,7 +58,7 @@ namespace OniSmartPriorities
             var workers = Components.LiveMinionIdentities.Items
                 .Where(identity => identity != null && !identity.HasTag(GameTags.Dead))
                 .Select(identity => new Worker(identity))
-                .Where(worker => worker.Consumer != null && worker.State.Enabled)
+                .Where(worker => worker.IsValid && worker.State.Enabled)
                 .ToList();
 
             if (workers.Count == 0)
@@ -145,7 +145,13 @@ namespace OniSmartPriorities
             public Worker(MinionIdentity identity)
             {
                 Consumer = identity.GetComponent<ChoreConsumer>();
-                Id = identity.GetComponent<KPrefabID>().InstanceID.ToString();
+                var prefabId = identity.GetComponent<KPrefabID>();
+                if (Consumer == null || prefabId == null)
+                {
+                    return;
+                }
+
+                Id = prefabId.InstanceID.ToString();
                 State = identity.gameObject.AddOrGet<SmartPrioritiesState>();
             }
 
@@ -154,6 +160,11 @@ namespace OniSmartPriorities
             public ChoreConsumer Consumer { get; }
 
             public SmartPrioritiesState State { get; }
+
+            public bool IsValid =>
+                !string.IsNullOrEmpty(Id)
+                && Consumer != null
+                && State != null;
         }
     }
 }

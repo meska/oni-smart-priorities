@@ -13,6 +13,10 @@ namespace OniSmartPriorities
 
         public int MaximumPriority { get; set; } = 5;
 
+        public int LifeSupportPriority { get; set; } = 4;
+
+        public int TogglePriority { get; set; } = 5;
+
         public float RebalanceIntervalSeconds { get; set; } = 60f;
 
         public static SmartPrioritiesConfig Load(string modPath)
@@ -53,6 +57,10 @@ namespace OniSmartPriorities
                 && MinimumPriority < EqualLevelPriority
                 && EqualLevelPriority < MaximumPriority
                 && MaximumPriority <= 5
+                && LifeSupportPriority >= 1
+                && LifeSupportPriority <= 5
+                && TogglePriority >= 1
+                && TogglePriority <= 5
                 && RebalanceIntervalSeconds >= 5f
                 && RebalanceIntervalSeconds <= 600f;
         }

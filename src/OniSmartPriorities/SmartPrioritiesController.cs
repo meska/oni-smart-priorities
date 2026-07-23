@@ -89,7 +89,11 @@ namespace OniSmartPriorities
                 var levels = eligibleWorkers.ToDictionary(
                     worker => worker.Id,
                     worker => worker.Consumer.GetAssociatedSkillLevel(group));
-                var priorities = PriorityPolicy.Assign(levels, config);
+                var fixedPriority = GetFixedPriority(group);
+                var priorities = PriorityPolicy.Assign(
+                    levels,
+                    config,
+                    fixedPriority);
 
                 foreach (var worker in eligibleWorkers)
                 {
@@ -118,6 +122,22 @@ namespace OniSmartPriorities
                     $"[Smart Priorities] Updated {changedPriorities} priorities "
                     + $"across {workers.Count} duplicants.");
             }
+        }
+
+        private static int? GetFixedPriority(ChoreGroup group)
+        {
+            // Ste do categorie no ga skill utile: ghe demo priorità fissa.
+            if (group == Db.Get().ChoreGroups.LifeSupport)
+            {
+                return config.LifeSupportPriority;
+            }
+
+            if (group == Db.Get().ChoreGroups.Toggle)
+            {
+                return config.TogglePriority;
+            }
+
+            return null;
         }
 
         private sealed class Worker

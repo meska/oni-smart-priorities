@@ -31,6 +31,26 @@ namespace OniSmartPriorities.Tests
             Assert.All(result.Values, priority => Assert.Equal(3, priority));
         }
 
+        [Theory]
+        [InlineData(4)]
+        [InlineData(5)]
+        public void FixedEssentialPriorityIgnoresEqualSkillLevels(int priority)
+        {
+            var result = PriorityPolicy.Assign(
+                new Dictionary<string, int>
+                {
+                    ["Ada"] = 0,
+                    ["Burt"] = 0,
+                    ["Camille"] = 0
+                },
+                config,
+                priority);
+
+            Assert.All(
+                result.Values,
+                assignedPriority => Assert.Equal(priority, assignedPriority));
+        }
+
         [Fact]
         public void TwoLevelsUseFullRelativeRange()
         {

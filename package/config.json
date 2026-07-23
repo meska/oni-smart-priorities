@@ -2,5 +2,7 @@
   "MinimumPriority": 2,
   "EqualLevelPriority": 3,
   "MaximumPriority": 5,
+  "LifeSupportPriority": 4,
+  "TogglePriority": 5,
   "RebalanceIntervalSeconds": 60.0
 }

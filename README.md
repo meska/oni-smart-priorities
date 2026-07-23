@@ -17,6 +17,10 @@ Per ciascuna categoria:
   rimane sempre coperta anche all'inizio della colonia;
 - i divieti imposti dai tratti del duplicante vengono rispettati.
 
+Le categorie senza una competenza associata usano priorità fisse: `Supporto
+vitale` è alta (4) per tutti e `Attivazione` è molto alta (5), così i compiti
+essenziali e gli ordini manuali non restano in attesa.
+
 La mod gestisce duplicanti organici e bionici. Le priorità vengono ricalcolate
 ogni 60 secondi di gioco, quindi seguono la crescita degli attributi e l'arrivo
 di nuovi duplicanti. Le modifiche manuali nella schermata Priorità vengono

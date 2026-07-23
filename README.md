@@ -1,5 +1,7 @@
 # Smart Priorities
 
+![Workshop preview](package/preview.png)
+
 Mod locale per Oxygen Not Included che aggiorna automaticamente le priorità
 personali dei duplicanti in base al loro livello relativo per ogni categoria di
 lavoro.

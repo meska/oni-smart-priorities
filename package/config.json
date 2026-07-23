@@ -1,0 +1,6 @@
+{
+  "MinimumPriority": 2,
+  "EqualLevelPriority": 3,
+  "MaximumPriority": 5,
+  "RebalanceIntervalSeconds": 60.0
+}

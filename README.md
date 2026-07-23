@@ -2,6 +2,8 @@
 
 ![Workshop preview](package/preview.png)
 
+[Install from Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3770104072)
+
 Mod locale per Oxygen Not Included che aggiorna automaticamente le priorità
 personali dei duplicanti in base al loro livello relativo per ogni categoria di
 lavoro.

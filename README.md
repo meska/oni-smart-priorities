@@ -22,6 +22,12 @@ ogni 60 secondi di gioco, quindi seguono la crescita degli attributi e l'arrivo
 di nuovi duplicanti. Le modifiche manuali nella schermata Priorità vengono
 riallineate al calcolo automatico al ribilanciamento successivo.
 
+Selezionando un duplicante compare il pannello laterale `Smart Priorities`: il
+controllo automatico è attivo per tutti per impostazione predefinita, ma può
+essere disattivato e riattivato individualmente. La scelta viene salvata nella
+partita; quando è disattivato, la mod lascia intatte le priorità personali di
+quel duplicante.
+
 ## Build
 
 ```sh

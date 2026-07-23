@@ -13,6 +13,8 @@ Automatically balances duplicant work priorities according to their relative ski
 [*]Respects work restrictions caused by duplicant traits.
 [*]Supports both standard and Bionic duplicants.
 [*]Rebalances automatically every 60 seconds of game time.
+[*]Can be disabled individually for any duplicant from their side panel.
+[*]Per-duplicant choices are stored in the save; automatic management is enabled by default.
 [/list]
 
 [b]Source code and releases[/b]

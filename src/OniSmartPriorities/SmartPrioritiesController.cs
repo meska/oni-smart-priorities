@@ -21,6 +21,11 @@ namespace OniSmartPriorities
             nextRebalanceTime = -1f;
         }
 
+        public static void RequestRebalance()
+        {
+            nextRebalanceTime = -1f;
+        }
+
         public static void TryRebalance()
         {
             if (GameClock.Instance == null || Db.Get() == null)
@@ -53,7 +58,7 @@ namespace OniSmartPriorities
             var workers = Components.LiveMinionIdentities.Items
                 .Where(identity => identity != null && !identity.HasTag(GameTags.Dead))
                 .Select(identity => new Worker(identity))
-                .Where(worker => worker.Consumer != null)
+                .Where(worker => worker.Consumer != null && worker.State.Enabled)
                 .ToList();
 
             if (workers.Count == 0)
@@ -121,11 +126,14 @@ namespace OniSmartPriorities
             {
                 Consumer = identity.GetComponent<ChoreConsumer>();
                 Id = identity.GetComponent<KPrefabID>().InstanceID.ToString();
+                State = identity.gameObject.AddOrGet<SmartPrioritiesState>();
             }
 
             public string Id { get; }
 
             public ChoreConsumer Consumer { get; }
+
+            public SmartPrioritiesState State { get; }
         }
     }
 }

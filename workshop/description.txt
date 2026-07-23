@@ -1,0 +1,19 @@
+[h1]Smart Priorities[/h1]
+
+Automatically balances duplicant work priorities according to their relative skill levels across the colony.
+
+[b]Features[/b]
+[list]
+[*]Compares duplicants by the relevant attribute for each work category.
+[*]Assigns the highest priority to the most capable duplicants.
+[*]Distributes everyone else proportionally between high, normal, and low priority.
+[*]Gives equal priority to duplicants with equal skill.
+[*]Never assigns priority 0 or 1 to an eligible duplicant, so every work category remains covered.
+[*]Keeps everyone at normal priority when all duplicants start at the same level.
+[*]Respects work restrictions caused by duplicant traits.
+[*]Supports both standard and Bionic duplicants.
+[*]Rebalances automatically every 60 seconds of game time.
+[/list]
+
+[b]Source code and releases[/b]
+https://github.com/meska/oni-smart-priorities

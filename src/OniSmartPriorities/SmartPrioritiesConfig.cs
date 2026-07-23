@@ -23,7 +23,7 @@ namespace OniSmartPriorities
             {
                 if (!File.Exists(configPath))
                 {
-                    Debug.LogWarning("[ONI Smart Priorities] config.json not found; using defaults.");
+                    Debug.LogWarning("[Smart Priorities] config.json not found; using defaults.");
                     return new SmartPrioritiesConfig();
                 }
 
@@ -32,7 +32,7 @@ namespace OniSmartPriorities
 
                 if (config == null || !config.IsValid())
                 {
-                    Debug.LogWarning("[ONI Smart Priorities] Invalid config.json; using defaults.");
+                    Debug.LogWarning("[Smart Priorities] Invalid config.json; using defaults.");
                     return new SmartPrioritiesConfig();
                 }
 
@@ -42,7 +42,7 @@ namespace OniSmartPriorities
             {
                 // JSON storto? Meio i default che blocar tuti i lavori.
                 Debug.LogWarning(
-                    $"[ONI Smart Priorities] Cannot read config.json; using defaults. {exception.Message}");
+                    $"[Smart Priorities] Cannot read config.json; using defaults. {exception.Message}");
                 return new SmartPrioritiesConfig();
             }
         }

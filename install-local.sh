@@ -15,4 +15,4 @@ if [[ ! -f "$mod_dir/config.json" ]]; then
 fi
 cp "$dll_path" "$mod_dir/OniSmartPriorities.dll"
 
-echo "Installed ONI Smart Priorities in: $mod_dir"
+echo "Installed Smart Priorities in: $mod_dir"

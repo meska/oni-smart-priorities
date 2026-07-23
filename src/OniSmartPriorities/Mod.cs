@@ -10,7 +10,7 @@ namespace OniSmartPriorities
         {
             SmartPrioritiesController.Configure(SmartPrioritiesConfig.Load(path));
             base.OnLoad(harmony);
-            Debug.Log("[ONI Smart Priorities] Mod loaded.");
+            Debug.Log("[Smart Priorities] Mod loaded.");
         }
     }
 

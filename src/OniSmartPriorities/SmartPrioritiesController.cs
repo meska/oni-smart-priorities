@@ -44,7 +44,7 @@ namespace OniSmartPriorities
             {
                 // La mod no ga mai da fermar el sim se Klei cambia una API.
                 Debug.LogError(
-                    $"[ONI Smart Priorities] Rebalance failed: {exception}");
+                    $"[Smart Priorities] Rebalance failed: {exception}");
             }
         }
 
@@ -103,14 +103,14 @@ namespace OniSmartPriorities
             if (uncoveredGroups.Count > 0)
             {
                 Debug.LogWarning(
-                    "[ONI Smart Priorities] No eligible duplicant for: "
+                    "[Smart Priorities] No eligible duplicant for: "
                     + string.Join(", ", uncoveredGroups));
             }
 
             if (changedPriorities > 0)
             {
                 Debug.Log(
-                    $"[ONI Smart Priorities] Updated {changedPriorities} priorities "
+                    $"[Smart Priorities] Updated {changedPriorities} priorities "
                     + $"across {workers.Count} duplicants.");
             }
         }
